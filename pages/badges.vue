@@ -1,0 +1,12 @@
+<script setup lang="ts">
+import Refer from "~/components/refer.vue";
+</script>
+
+<template>
+  <v-container>
+    <v-badge bordered :content="6">
+      <v-btn>Unread messages</v-btn>
+    </v-badge>
+    <refer component-name="badges" />
+  </v-container>
+</template>
