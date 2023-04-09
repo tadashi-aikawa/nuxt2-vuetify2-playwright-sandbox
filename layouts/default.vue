@@ -12,8 +12,8 @@ const ITEMS = [
   },
   {
     icon: "mdi-application",
-    title: "AppBars",
-    to: "/app-bars",
+    title: "Bars/AppBars",
+    to: "/bars/app-bars",
   },
 ];
 
