@@ -17,8 +17,6 @@ const test = base.extend<{ target: AlertsPage }>({
     ),
 });
 
-test.describe("Alert", () => {
-  test("アラートメッセージを確認する", async ({ target }) => {
-    await expect(target.アラート).toHaveText("これはエラーです");
-  });
+test("アラートメッセージを確認する", async ({ target }) => {
+  await expect(target.アラート).toHaveText("これはエラーです");
 });

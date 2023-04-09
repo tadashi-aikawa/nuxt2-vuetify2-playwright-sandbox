@@ -17,8 +17,6 @@ const test = base.extend<{ target: BadgesPage }>({
     ),
 });
 
-test.describe("Badge", () => {
-  test("バッジの値を確認する", async ({ target }) => {
-    await expect(target.バッジ).toHaveText("6");
-  });
+test("バッジの値を確認する", async ({ target }) => {
+  await expect(target.バッジ).toHaveText("6");
 });

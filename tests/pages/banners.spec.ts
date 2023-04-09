@@ -17,20 +17,16 @@ const test = base.extend<{ target: BannersPage }>({
     ),
 });
 
-test.describe("Banner", () => {
-  test("バナーが表示されている", async ({ target }) => {
-    await expect(target.バナー).toHaveText(
-      /インターネットにつながっていません/
-    );
-  });
+test("バナーが表示されている", async ({ target }) => {
+  await expect(target.バナー).toHaveText(/インターネットにつながっていません/);
+});
 
-  test("アイコンクリックに反応する", async ({ target }) => {
-    await target.アイコン.click();
-    await expect(target.バナー).toHaveText(/アイコンをクリックしました/);
-  });
+test("アイコンクリックに反応する", async ({ target }) => {
+  await target.アイコン.click();
+  await expect(target.バナー).toHaveText(/アイコンをクリックしました/);
+});
 
-  test("再接続ボタンに反応する", async ({ target }) => {
-    await target.再接続ボタン.click();
-    await expect(target.バナー).toHaveText(/再接続を試みました/);
-  });
+test("再接続ボタンに反応する", async ({ target }) => {
+  await target.再接続ボタン.click();
+  await expect(target.バナー).toHaveText(/再接続を試みました/);
 });

@@ -17,13 +17,11 @@ const test = base.extend<{ target: AppBarsPage }>({
     ),
 });
 
-test.describe("AppBars", () => {
-  test("アプリケーションバーの表示を確認する", async ({ target }) => {
-    await expect(target.アプリケーションバー).toHaveText("タイトル");
-  });
+test("アプリケーションバーの表示を確認する", async ({ target }) => {
+  await expect(target.アプリケーションバー).toHaveText("タイトル");
+});
 
-  test("ハンバーガーメニューボタンのクリックに反応する", async ({ target }) => {
-    await target.ハンバーガーメニューボタン.click();
-    await expect(target.アプリケーションバー).toHaveText(/クリック済/);
-  });
+test("ハンバーガーメニューボタンのクリックに反応する", async ({ target }) => {
+  await target.ハンバーガーメニューボタン.click();
+  await expect(target.アプリケーションバー).toHaveText(/クリック済/);
 });
