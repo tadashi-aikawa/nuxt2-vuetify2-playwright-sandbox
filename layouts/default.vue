@@ -30,6 +30,11 @@ const ITEMS = [
     title: "Checkboxes",
     to: "/checkboxes",
   },
+  {
+    icon: "mdi-form-dropdown",
+    title: "Combobox",
+    to: "/combobox",
+  },
 ];
 
 interface State {
