@@ -35,6 +35,11 @@ const ITEMS = [
     title: "Combobox",
     to: "/combobox",
   },
+  {
+    icon: "mdi-form-textbox",
+    title: "Inputs",
+    to: "/inputs",
+  },
 ];
 
 interface State {
