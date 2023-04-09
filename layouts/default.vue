@@ -25,6 +25,11 @@ const ITEMS = [
     title: "BottomSheets",
     to: "/bottom-sheets",
   },
+  {
+    icon: "mdi-checkbox-outline",
+    title: "Checkboxes",
+    to: "/checkboxes",
+  },
 ];
 
 interface State {
