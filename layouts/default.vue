@@ -49,6 +49,7 @@ const ITEMS = [
 
 interface State {
   drawer: boolean;
+  mini: boolean;
   title: string;
 }
 
@@ -59,14 +60,30 @@ interface Item {
 }
 
 const state = reactive<State>({
-  drawer: false,
+  drawer: true,
+  mini: true,
   title: "Nuxt2 Vue2 Playwright Sandbox",
 });
 </script>
 
 <template>
   <v-app>
-    <v-navigation-drawer v-model="state.drawer" app permanent>
+    <v-app-bar app clipped-left dense elevation="0" dark color="green">
+      <v-app-bar-nav-icon
+        @click="state.mini = !state.mini"
+      ></v-app-bar-nav-icon>
+
+      <v-toolbar-title>nuxt2-vuetify2-playwright-sandbox</v-toolbar-title>
+
+      <v-spacer></v-spacer>
+    </v-app-bar>
+    <v-navigation-drawer
+      clipped
+      v-model="state.drawer"
+      :mini-variant.sync="state.mini"
+      app
+      absolute
+    >
       <v-list>
         <v-list-item
           v-for="(item, i) in ITEMS"
@@ -86,7 +103,11 @@ const state = reactive<State>({
     </v-navigation-drawer>
     <v-main>
       <v-container>
-        <Nuxt />
+        <v-col cols="8">
+          <v-card class="ma-8 pa-4">
+            <Nuxt />
+          </v-card>
+        </v-col>
       </v-container>
     </v-main>
   </v-app>
