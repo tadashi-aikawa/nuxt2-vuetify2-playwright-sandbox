@@ -3,7 +3,7 @@ import type { Locator, Page } from "@playwright/test";
 export class AppBarsPage {
   constructor(public page: Page) {}
 
-  static path = "/bars/app-bars";
+  static path = "/app-bars";
 
   get アプリケーションバー(): Locator {
     return this.page.getByTestId("app-bar");

@@ -13,12 +13,17 @@ const ITEMS = [
   {
     icon: "mdi-application",
     title: "Bars/AppBars",
-    to: "/bars/app-bars",
+    to: "/app-bars",
   },
   {
     icon: "mdi-dock-bottom",
     title: "BottomNavigation",
     to: "/bottom-navigation",
+  },
+  {
+    icon: "mdi-dock-bottom",
+    title: "BottomSheets",
+    to: "/bottom-sheets",
   },
 ];
 
