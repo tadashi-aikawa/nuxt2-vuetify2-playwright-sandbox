@@ -40,6 +40,11 @@ const ITEMS = [
     title: "Inputs",
     to: "/inputs",
   },
+  {
+    icon: "mdi-radiobox-marked",
+    title: "RadioButtons",
+    to: "/radio-buttons",
+  },
 ];
 
 interface State {
