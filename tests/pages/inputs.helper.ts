@@ -6,7 +6,7 @@ export class InputsPage {
   static path = "/inputs";
 
   get 入力欄(): Locator {
-    return this.page.getByTestId("input");
+    return this.page.getByPlaceholder("20文字以内で必須");
   }
   get エラーアラート(): Locator {
     return this.page.getByRole("alert");

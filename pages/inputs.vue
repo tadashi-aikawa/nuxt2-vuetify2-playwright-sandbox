@@ -15,7 +15,7 @@ const rules = [
     <v-text-field
       v-model="value"
       :rules="rules"
-      data-testid="input"
+      placeholder="20文字以内で必須"
     ></v-text-field>
 
     <refer component-name="inputs" />
