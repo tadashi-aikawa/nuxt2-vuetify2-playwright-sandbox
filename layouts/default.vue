@@ -5,6 +5,11 @@ const ITEMS = [
   { icon: "mdi-apps", title: "Top", to: "/" },
   { icon: "mdi-alert", title: "Alerts", to: "/alerts" },
   { icon: "mdi-square-rounded-badge-outline", title: "Badges", to: "/badges" },
+  {
+    icon: "mdi-toaster-oven",
+    title: "Banners",
+    to: "/banners",
+  },
 ];
 
 interface State {
