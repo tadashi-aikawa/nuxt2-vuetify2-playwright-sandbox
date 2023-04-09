@@ -15,6 +15,11 @@ const ITEMS = [
     title: "Bars/AppBars",
     to: "/bars/app-bars",
   },
+  {
+    icon: "mdi-dock-bottom",
+    title: "BottomNavigation",
+    to: "/bottom-navigation",
+  },
 ];
 
 interface State {
