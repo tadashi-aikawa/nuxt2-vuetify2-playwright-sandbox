@@ -10,6 +10,11 @@ const ITEMS = [
     title: "Banners",
     to: "/banners",
   },
+  {
+    icon: "mdi-application",
+    title: "AppBars",
+    to: "/app-bars",
+  },
 ];
 
 interface State {
