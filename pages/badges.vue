@@ -4,7 +4,7 @@ import Refer from "~/components/refer.vue";
 
 <template>
   <v-container>
-    <v-badge bordered :content="6">
+    <v-badge bordered :content="6" data-testid="badge">
       <v-btn>Unread messages</v-btn>
     </v-badge>
     <refer component-name="badges" />

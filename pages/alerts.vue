@@ -4,7 +4,9 @@ import Refer from "~/components/refer.vue";
 
 <template>
   <v-container>
-    <v-alert outlined type="error"> これはエラーです </v-alert>
+    <v-alert outlined type="error" data-testid="alert">
+      これはエラーです
+    </v-alert>
     <refer component-name="alerts" />
   </v-container>
 </template>

@@ -7,9 +7,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "lint:prettier": "prettier --check .",
-    "lint": "npm run lint:prettier",
-    "lintfix": "prettier --write --list-different ."
+    "test:e2e": "playwright test --ui"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
