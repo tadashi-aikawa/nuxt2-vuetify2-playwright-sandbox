@@ -104,9 +104,7 @@ const state = reactive<State>({
     <v-main>
       <v-container>
         <v-col cols="8">
-          <v-card class="ma-8 pa-4">
-            <Nuxt />
-          </v-card>
+          <Nuxt />
         </v-col>
       </v-container>
     </v-main>

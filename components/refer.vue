@@ -24,34 +24,32 @@ const specUrl = computed(
 </script>
 
 <template>
-  <v-footer padless class="mt-5">
-    <v-col class="text-center" cols="12">
-      <a :href="vuetifyUrl" target="_blank" class="button-link">
-        <v-btn color="cyan" class="ma-2 white--text">
-          Vuetifyドキュメント
-          <v-icon right> mdi-vuetify </v-icon>
-        </v-btn>
-      </a>
-      <a :href="pageUrl" target="_blank" class="button-link">
-        <v-btn color="green" class="ma-2 white--text">
-          Vueファイル
-          <v-icon right> mdi-vuejs </v-icon>
-        </v-btn>
-      </a>
-      <a :href="specUrl" target="_blank" class="button-link">
-        <v-btn color="red" class="ma-2 white--text">
-          テストコード
-          <v-icon right> mdi-drama-masks </v-icon>
-        </v-btn>
-      </a>
-      <a :href="helperUrl" target="_blank" class="button-link">
-        <v-btn color="blue" class="ma-2 white--text">
-          テストヘルパークラス
-          <v-icon right> mdi-language-typescript </v-icon>
-        </v-btn>
-      </a>
-    </v-col>
-  </v-footer>
+  <v-card-actions class="d-flex justify-center">
+    <a :href="vuetifyUrl" target="_blank" class="button-link">
+      <v-btn color="cyan" class="ma-2 white--text" text small>
+        Vuetifyドキュメント
+        <v-icon right> mdi-vuetify </v-icon>
+      </v-btn>
+    </a>
+    <a :href="pageUrl" target="_blank" class="button-link">
+      <v-btn color="green" class="ma-2 white--text" text small>
+        Vueファイル
+        <v-icon right> mdi-vuejs </v-icon>
+      </v-btn>
+    </a>
+    <a :href="specUrl" target="_blank" class="button-link">
+      <v-btn color="red" class="ma-2 white--text" text small>
+        テストコード
+        <v-icon right> mdi-drama-masks </v-icon>
+      </v-btn>
+    </a>
+    <a :href="helperUrl" target="_blank" class="button-link">
+      <v-btn color="blue" class="ma-2 white--text" text small>
+        テストヘルパークラス
+        <v-icon right> mdi-language-typescript </v-icon>
+      </v-btn>
+    </a>
+  </v-card-actions>
 </template>
 
 <style scoped>
