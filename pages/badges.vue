@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import Refer from "~/components/refer.vue";
+import CardWrapper from "~/components/card-wrapper.vue";
 </script>
 
 <template>
-  <v-container>
+  <card-wrapper component-name="badges">
     <v-badge bordered :content="6" data-testid="badge">
       <v-btn>Unread messages</v-btn>
     </v-badge>
-    <refer component-name="badges" />
-  </v-container>
+  </card-wrapper>
 </template>

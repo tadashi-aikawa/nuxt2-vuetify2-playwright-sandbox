@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Refer from "~/components/refer.vue";
 import { ref } from "vue";
+import CardWrapper from "~/components/card-wrapper.vue";
 
 const value = ref("");
 
@@ -11,13 +11,11 @@ const rules = [
 </script>
 
 <template>
-  <v-container>
+  <card-wrapper component-name="inputs">
     <v-text-field
       v-model="value"
       :rules="rules"
       placeholder="20文字以内で必須"
     ></v-text-field>
-
-    <refer component-name="inputs" />
-  </v-container>
+  </card-wrapper>
 </template>

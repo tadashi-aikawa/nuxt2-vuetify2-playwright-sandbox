@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import Refer from "~/components/refer.vue";
+import CardWrapper from "~/components/card-wrapper.vue";
 </script>
 
 <template>
-  <v-container>
+  <card-wrapper component-name="alerts">
     <v-alert outlined type="error" data-testid="alert">
       これはエラーです
     </v-alert>
-    <refer component-name="alerts" />
-  </v-container>
+  </card-wrapper>
 </template>

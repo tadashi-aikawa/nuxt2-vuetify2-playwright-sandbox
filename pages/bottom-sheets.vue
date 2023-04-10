@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import Refer from "~/components/refer.vue";
 import { ref } from "vue";
+import CardWrapper from "~/components/card-wrapper.vue";
 
 const sheet = ref(false);
 </script>
 
 <template>
-  <v-container>
+  <card-wrapper component-name="bottom-navigation">
     <v-bottom-sheet v-model="sheet" inset>
       <template v-slot:activator="{ on, attrs }">
         <v-btn v-bind="attrs" v-on="on">ボトムシートを開く</v-btn>
@@ -22,7 +22,5 @@ const sheet = ref(false);
         </div>
       </v-sheet>
     </v-bottom-sheet>
-
-    <refer component-name="bottom-navigation" />
-  </v-container>
+  </card-wrapper>
 </template>

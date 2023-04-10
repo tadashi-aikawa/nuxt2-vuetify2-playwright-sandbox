@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import Refer from "~/components/refer.vue";
 import { ref } from "vue";
+import CardWrapper from "~/components/card-wrapper.vue";
 
 const isClicked = ref(false);
 const reconnected = ref(false);
 </script>
 
 <template>
-  <v-container>
+  <card-wrapper component-name="banners">
     <v-banner single-line @click:icon="isClicked = true" data-testid="banner">
       <template v-slot:icon>
         <v-icon slot="icon" color="warning" size="36" data-testid="icon">
@@ -22,6 +22,5 @@ const reconnected = ref(false);
         <v-btn color="primary" text @click="reconnected = true"> 再接続 </v-btn>
       </template>
     </v-banner>
-    <refer component-name="banners" />
-  </v-container>
+  </card-wrapper>
 </template>

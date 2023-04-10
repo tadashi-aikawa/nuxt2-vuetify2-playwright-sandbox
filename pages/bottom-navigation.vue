@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import Refer from "~/components/refer.vue";
 import { ref } from "vue";
+import CardWrapper from "~/components/card-wrapper.vue";
 
 const value = ref(2);
 </script>
 
 <template>
-  <v-container>
+  <card-wrapper component-name="bottom-navigation">
     <v-bottom-navigation
       v-model="value"
       color="primary"
@@ -26,10 +26,8 @@ const value = ref(2);
       </v-btn>
     </v-bottom-navigation>
 
-    <div>
+    <div class="d-flex justify-center pa-3">
       選択したindex: <span data-testid="selected-index">{{ value }}</span>
     </div>
-
-    <refer component-name="bottom-navigation" />
-  </v-container>
+  </card-wrapper>
 </template>
