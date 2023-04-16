@@ -7,7 +7,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "test:e2e": "playwright test --ui"
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",

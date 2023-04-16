@@ -16,13 +16,24 @@ npm install
 npm run dev
 ```
 
-PlaywrightをUIモードで立ち上げます。
+Playwrightテストを実行します。
 
 ```console
 npm run test:e2e
 ```
 
-あとは実行するだけ。
+画面の操作状況を表示したい場合はheadedフラグを指定します。
+
+```console
+npm run test:e2e -- --headed
+```
+
+テスト作成時はUIモードが便利です。
+
+```console
+npm run test:e2e -- --ui
+```
+
 
 ## ディレクトリ構成
 
