@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Refer from "~/components/refer.vue";
 import { reactive } from "vue";
 import CardWrapper from "~/components/card-wrapper.vue";
 

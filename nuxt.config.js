@@ -29,4 +29,5 @@ export default {
   axios: {
     baseURL: "/",
   },
+  plugins: [{ src: "~/plugins/prism.ts" }],
 };
