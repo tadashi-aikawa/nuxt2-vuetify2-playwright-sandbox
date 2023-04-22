@@ -26,6 +26,11 @@ const ITEMS = [
     to: "/bottom-sheets",
   },
   {
+    icon: "mdi-button-cursor",
+    title: "Buttons",
+    to: "/buttons",
+  },
+  {
     icon: "mdi-checkbox-outline",
     title: "Checkboxes",
     to: "/checkboxes",
