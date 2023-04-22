@@ -62,27 +62,38 @@ onMounted(async () => {
 <template>
   <div>
     <v-tabs v-model="state.tabs" centered class="pt-3">
-      <v-tab href="#vuetify">
-        <v-icon left> mdi-vuetify </v-icon>
-        Vuetifyドキュメント
-      </v-tab>
-      <v-tab href="#vue">
-        <v-icon left> mdi-vuejs </v-icon>
-        Vueファイル
+      <v-tab href="#helper">
+        <v-icon left> mdi-language-typescript </v-icon>
+        テストヘルパークラス
       </v-tab>
       <v-tab href="#spec">
         <v-icon left> mdi-drama-masks </v-icon>
         テストコード
       </v-tab>
-      <v-tab href="#helper">
-        <v-icon left> mdi-language-typescript </v-icon>
-        テストヘルパークラス
+      <v-tab href="#vue">
+        <v-icon left> mdi-vuejs </v-icon>
+        Vueファイル
+      </v-tab>
+      <v-tab href="#vuetify">
+        <v-icon left> mdi-vuetify </v-icon>
+        Vuetifyドキュメント
       </v-tab>
     </v-tabs>
 
     <v-tabs-items v-model="state.tabs" class="tab-items">
-      <v-tab-item value="vuetify">
-        <iframe :src="vuetifyUrl" style="height: 560px; width: 100%" />
+      <v-tab-item value="helper">
+        <highlight-code
+          :content="state.helperCode"
+          language="typescript"
+          max-height="600px"
+        />
+      </v-tab-item>
+      <v-tab-item value="spec">
+        <highlight-code
+          :content="state.specCode"
+          language="typescript"
+          max-height="600px"
+        />
       </v-tab-item>
       <v-tab-item value="vue">
         <highlight-code
@@ -91,19 +102,8 @@ onMounted(async () => {
           max-height="600px"
         />
       </v-tab-item>
-      <v-tab-item value="spec">
-        <highlight-code
-          :content="state.helperCode"
-          language="typescript"
-          max-height="600px"
-        />
-      </v-tab-item>
-      <v-tab-item value="helper">
-        <highlight-code
-          :content="state.specCode"
-          language="typescript"
-          max-height="600px"
-        />
+      <v-tab-item value="vuetify">
+        <iframe :src="vuetifyUrl" style="height: 560px; width: 100%" />
       </v-tab-item>
     </v-tabs-items>
   </div>
