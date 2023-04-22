@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactive } from "vue";
 
-const ITEMS = [
+const ITEMS: Item[] = [
   { icon: "mdi-apps", title: "Top", to: "/" },
   { icon: "mdi-alert", title: "Alerts", to: "/alerts" },
   { icon: "mdi-square-rounded-badge-outline", title: "Badges", to: "/badges" },
@@ -49,6 +49,11 @@ const ITEMS = [
     icon: "mdi-radiobox-marked",
     title: "RadioButtons",
     to: "/radio-buttons",
+  },
+  {
+    icon: "mdi-form-textarea",
+    title: "Textareas",
+    to: "/textareas",
   },
 ];
 
