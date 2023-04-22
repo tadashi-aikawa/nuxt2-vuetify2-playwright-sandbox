@@ -1,8 +1,7 @@
-import type { Locator, Page } from "@playwright/test";
+import type { Locator } from "@playwright/test";
+import { BasePage } from "~/tests/page";
 
-export class BadgesPage {
-  constructor(public page: Page) {}
-
+export class BadgesPage extends BasePage {
   static path = "/badges";
 
   get バッジ(): Locator {

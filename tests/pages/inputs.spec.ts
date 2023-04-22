@@ -1,45 +1,35 @@
-import { expect, test as base } from "@playwright/test";
-import { buildUrl, createPage } from "~/tests/page-factory";
-import { getEnv } from "~/tests/env";
+import { expect } from "@playwright/test";
+import { myTest, ページを開く } from "~/tests/page";
 import { InputsPage } from "~/tests/pages/inputs.helper";
 
-const test = base.extend<{ target: InputsPage }>({
-  target: async ({ playwright }, use) =>
-    use(
-      new InputsPage(
-        await createPage(playwright, {
-          url: buildUrl(
-            getEnv("BASE_URL") ?? "localhost:3000",
-            InputsPage.path
-          ),
-        })
-      )
-    ),
+myTest("入力欄は空", async ({ page }) => {
+  const 入力画面 = await ページを開く(page, InputsPage);
+  await expect(入力画面.入力欄).toBeEmpty();
 });
 
-test("入力欄は空", async ({ target }) => {
-  await expect(target.入力欄).toBeEmpty();
+myTest("初期値が空でもエラーは出ない", async ({ page }) => {
+  const 入力画面 = await ページを開く(page, InputsPage);
+  await expect(入力画面.エラーアラート).toBeHidden();
 });
 
-test("初期値が空でもエラーは出ない", async ({ target }) => {
-  await expect(target.エラーアラート).toBeHidden();
+myTest("一度文字を入力してから空にするとエラーが出る", async ({ page }) => {
+  const 入力画面 = await ページを開く(page, InputsPage);
+  await 入力画面.入力欄.fill("hoge");
+  await 入力画面.入力欄.fill("");
+  await expect(入力画面.エラーアラート).toBeVisible();
+  await expect(入力画面.エラーアラート).toHaveText("必須です");
 });
 
-test("一度文字を入力してから空にするとエラーが出る", async ({ target }) => {
-  await target.入力欄.fill("hoge");
-  await target.入力欄.fill("");
-  await expect(target.エラーアラート).toBeVisible();
-  await expect(target.エラーアラート).toHaveText("必須です");
+myTest("20文字以内なら入力してもエラーは出ない", async ({ page }) => {
+  const 入力画面 = await ページを開く(page, InputsPage);
+  await 入力画面.入力欄.fill("12345678901234567890");
+  await expect(入力画面.エラーアラート).toBeHidden();
 });
 
-test("20文字以内なら入力してもエラーは出ない", async ({ target }) => {
-  await target.入力欄.fill("12345678901234567890");
-  await expect(target.エラーアラート).toBeHidden();
-});
-
-test("21文字以上ならエラーが出る", async ({ target }) => {
-  await target.入力欄.fill("123456789012345678901");
-  await expect(target.入力欄).toHaveValue("123456789012345678901");
-  await expect(target.エラーアラート).toBeVisible();
-  await expect(target.エラーアラート).toHaveText("20文字を越えています");
+myTest("21文字以上ならエラーが出る", async ({ page }) => {
+  const 入力画面 = await ページを開く(page, InputsPage);
+  await 入力画面.入力欄.fill("123456789012345678901");
+  await expect(入力画面.入力欄).toHaveValue("123456789012345678901");
+  await expect(入力画面.エラーアラート).toBeVisible();
+  await expect(入力画面.エラーアラート).toHaveText("20文字を越えています");
 });

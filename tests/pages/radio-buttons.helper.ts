@@ -1,8 +1,7 @@
-import type { Locator, Page } from "@playwright/test";
+import type { Locator } from "@playwright/test";
+import { BasePage } from "~/tests/page";
 
-export class RadioButtonsPage {
-  constructor(public page: Page) {}
-
+export class RadioButtonsPage extends BasePage {
   static path = "/radio-buttons";
 
   get ラジオボタン2(): Locator {

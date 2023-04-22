@@ -1,8 +1,7 @@
-import type { Locator, Page } from "@playwright/test";
+import type { Locator } from "@playwright/test";
+import { BasePage } from "~/tests/page";
 
-export class BottomSheetsPage {
-  constructor(public page: Page) {}
-
+export class BottomSheetsPage extends BasePage {
   static path = "/bottom-sheets";
 
   get ボトムシートを開くボタン(): Locator {

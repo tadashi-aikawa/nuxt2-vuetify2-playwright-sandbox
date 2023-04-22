@@ -1,8 +1,7 @@
-import type { Locator, Page } from "@playwright/test";
+import type { Locator } from "@playwright/test";
+import { BasePage } from "~/tests/page";
 
-export class ComboboxPage {
-  constructor(public page: Page) {}
-
+export class ComboboxPage extends BasePage {
   static path = "/combobox";
 
   get 単一選択のコンボボックス(): Locator {

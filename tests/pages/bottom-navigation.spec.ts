@@ -1,27 +1,22 @@
-import { expect, test as base } from "@playwright/test";
-import { buildUrl, createPage } from "~/tests/page-factory";
-import { getEnv } from "~/tests/env";
+import { expect } from "@playwright/test";
+import { myTest, ページを開く } from "~/tests/page";
 import { BottomNavigationPage } from "~/tests/pages/bottom-navigation.helper";
 
-const test = base.extend<{ target: BottomNavigationPage }>({
-  target: async ({ playwright }, use) =>
-    use(
-      new BottomNavigationPage(
-        await createPage(playwright, {
-          url: buildUrl(
-            getEnv("BASE_URL") ?? "localhost:3000",
-            BottomNavigationPage.path
-          ),
-        })
-      )
-    ),
+myTest("ボトムナビゲーションが表示されている", async ({ page }) => {
+  const ボトムナビゲーション画面 = await ページを開く(
+    page,
+    BottomNavigationPage
+  );
+  await expect(ボトムナビゲーション画面.ボトムナビゲーション).toHaveText(
+    /あたり/
+  );
 });
 
-test("ボトムナビゲーションが表示されている", async ({ target }) => {
-  await expect(target.ボトムナビゲーション).toHaveText(/あたり/);
-});
-
-test("あたりボタンに反応する", async ({ target }) => {
-  await target.あたりボタン.click();
-  await expect(target.選択したindexテキスト).toHaveText("1");
+myTest("あたりボタンに反応する", async ({ page }) => {
+  const ボトムナビゲーション画面 = await ページを開く(
+    page,
+    BottomNavigationPage
+  );
+  await ボトムナビゲーション画面.あたりボタン.click();
+  await expect(ボトムナビゲーション画面.選択したindexテキスト).toHaveText("1");
 });

@@ -1,8 +1,7 @@
-import type { Locator, Page } from "@playwright/test";
+import type { Locator } from "@playwright/test";
+import { BasePage } from "~/tests/page";
 
-export class AppBarsPage {
-  constructor(public page: Page) {}
-
+export class AppBarsPage extends BasePage {
   static path = "/app-bars";
 
   get アプリケーションバー(): Locator {
