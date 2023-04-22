@@ -1,5 +1,5 @@
 import { expect, Locator, Page, test } from "@playwright/test";
-import { getEnv } from "./env";
+import { getBaseUrl } from "./env";
 import { createQueryString } from "./utils";
 
 interface ConstructorWithArg<T, A> {
@@ -35,7 +35,7 @@ export async function ページを開く<P extends typeof BasePage>(
 ): Promise<InstanceType<P>> {
   const p = new dstPageClass(page);
   await page.goto(
-    `${getEnv("BASE_URL")}${dstPageClass.path}${createQueryString(query)}`
+    `${getBaseUrl()}${dstPageClass.path}${createQueryString(query)}`
   );
   return p as InstanceType<P>;
 }
@@ -72,7 +72,7 @@ export class BasePage {
     pageClass: T
   ): Promise<void> {
     await expect(this.page).toHaveURL(
-      new RegExp(`${getEnv("BASE_URL")}${pageClass.path}($|\\?.+$)`)
+      new RegExp(`${getBaseUrl()}${pageClass.path}($|\\?.+$)`)
     );
   }
 }
