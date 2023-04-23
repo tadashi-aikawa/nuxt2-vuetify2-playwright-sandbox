@@ -7,7 +7,7 @@ type Language = "json" | "typescript";
 interface Props {
   content: string;
   language: Language;
-  maxHeight: number;
+  maxHeight: string | number;
 }
 const props = defineProps<Props>();
 
