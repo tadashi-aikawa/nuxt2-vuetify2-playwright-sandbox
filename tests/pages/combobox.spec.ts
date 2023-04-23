@@ -24,6 +24,19 @@ myTest("単一選択のコンボボックスをtwelveに変更する", async ({ 
 });
 
 myTest(
+  "単一選択のコンボボックスに入力してフィルタリングしたものを選ぶ",
+  async ({ page }) => {
+    const コンボボックス画面 = await ページを開く(page, ComboboxPage);
+    await コンボボックス画面.単一選択のコンボボックス.click();
+    await コンボボックス画面.単一選択のコンボボックス.fill("fif");
+    await コンボボックス画面.表示中のコンボボックス要素("fifth").click();
+    await expect(コンボボックス画面.単一選択のコンボボックス).toHaveValue(
+      "fifth"
+    );
+  }
+);
+
+myTest(
   "複数選択のコンボボックスにfirst,fifth,tenを指定する",
   async ({ page }) => {
     const コンボボックス画面 = await ページを開く(page, ComboboxPage);
