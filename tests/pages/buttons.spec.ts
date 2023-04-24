@@ -11,3 +11,17 @@ myTest("ボタンをクリックするとボタンが無効になる", async ({ 
 
   await expect(ボタン画面.押すと無効になるボタン).toBeDisabled();
 });
+
+myTest("ボタンをクリックするとダウンロードできる", async ({ page }) => {
+  const ボタン画面 = await ページを開く(page, ButtonsPage);
+
+  const content = await ボタン画面.クリックしてダウンロードし中身を取得(
+    ボタン画面.あるファイルをダウンロードボタン
+  );
+
+  await expect(content).toEqual(`# download
+
+- hoge
+- hoge
+`);
+});

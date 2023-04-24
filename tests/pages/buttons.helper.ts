@@ -7,4 +7,10 @@ export class ButtonsPage extends BasePage {
   get 押すと無効になるボタン(): Locator {
     return this.page.getByRole("button").getByText("押すと無効になる");
   }
+
+  get あるファイルをダウンロードボタン(): Locator {
+    return this.page
+      .getByRole("button")
+      .getByText("あるファイルをダウンロード");
+  }
 }

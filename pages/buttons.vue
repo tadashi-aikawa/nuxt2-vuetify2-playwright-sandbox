@@ -7,8 +7,13 @@ const clicked = ref(false);
 
 <template>
   <card-wrapper component-name="buttons">
-    <v-btn @click="clicked = true" :disabled="clicked">
-      押すと無効になる
-    </v-btn>
+    <div style="display: flex; gap: 10px">
+      <v-btn @click="clicked = true" :disabled="clicked">
+        押すと無効になる
+      </v-btn>
+      <v-btn>
+        <a href="download.md" download>あるファイルをダウンロード</a>
+      </v-btn>
+    </div>
   </card-wrapper>
 </template>

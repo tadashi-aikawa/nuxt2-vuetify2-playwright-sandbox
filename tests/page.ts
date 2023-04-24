@@ -58,6 +58,30 @@ export class BasePage {
     });
   }
 
+  async クリックしてダウンロード(locator: Locator) {
+    const downloadPromise = this.page.waitForEvent("download");
+    await locator.click();
+    const download = await downloadPromise;
+    return download.path();
+  }
+
+  async クリックしてダウンロードし中身を取得(
+    locator: Locator,
+    encoding: string = "utf-8"
+  ): Promise<string | null> {
+    const downloadPromise = this.page.waitForEvent("download");
+    await locator.click();
+    const download = await downloadPromise;
+
+    const path = await download.path();
+    if (!path) {
+      return null;
+    }
+
+    const fs = require("fs").promises;
+    return fs.readFile(path, encoding);
+  }
+
   async aタグの_blankは無視してクリック<T, A>(
     nextPageClass: ConstructorWithArg<A, Page>,
     locator: Locator
