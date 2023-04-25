@@ -15,13 +15,8 @@ myTest("ボタンをクリックするとボタンが無効になる", async ({ 
 myTest("ボタンをクリックするとダウンロードできる", async ({ page }) => {
   const ボタン画面 = await ページを開く(page, ButtonsPage);
 
-  const content = await ボタン画面.クリックしてダウンロードし中身を取得(
-    ボタン画面.あるファイルをダウンロードボタン
+  await ボタン画面.クリックしてダウンロードしたファイルと中身が同一のファイルであることを確認(
+    ボタン画面.あるファイルをダウンロードボタン,
+    "tests/golden/buttons1.md"
   );
-
-  await expect(content).toEqual(`# download
-
-- hoge
-- hoge
-`);
 });

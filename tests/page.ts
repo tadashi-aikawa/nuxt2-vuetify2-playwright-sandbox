@@ -1,6 +1,7 @@
 import { expect, Locator, Page, test } from "@playwright/test";
 import { getBaseUrl } from "./env";
 import { createQueryString } from "./utils";
+import * as fs from "fs";
 
 interface ConstructorWithArg<T, A> {
   new (arg: A): T;
@@ -65,22 +66,30 @@ export class BasePage {
     return download.path();
   }
 
-  async クリックしてダウンロードし中身を取得(
+  async クリックしてダウンロードしたファイルと中身が同一のファイルであることを確認(
     locator: Locator,
-    encoding: string = "utf-8"
-  ): Promise<string | null> {
+    path: string
+  ): Promise<void> {
     const downloadPromise = this.page.waitForEvent("download");
+
     await locator.click();
     const download = await downloadPromise;
 
-    const path = await download.path();
-    if (!path) {
-      return null;
-    }
+    const downloadPath = String(Number(new Date()));
+    await download.saveAs(downloadPath);
 
-    const fs = require("fs").promises;
-    return fs.readFile(path, encoding);
+    const [oneBody, anotherBody] = await Promise.all([
+      fs.promises.readFile(downloadPath),
+      fs.promises.readFile(path),
+    ]).then(([oneBuf, anotherBuf]) => [
+      new TextDecoder().decode(oneBuf),
+      new TextDecoder().decode(anotherBuf),
+    ]);
+    await fs.promises.rm(downloadPath);
+
+    await expect(oneBody).toEqual(anotherBody);
   }
+
 
   async aタグの_blankは無視してクリック<T, A>(
     nextPageClass: ConstructorWithArg<A, Page>,

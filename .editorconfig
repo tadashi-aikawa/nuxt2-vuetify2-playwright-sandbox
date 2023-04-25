@@ -1,7 +1,7 @@
 # editorconfig.org
 root = true
 
-[*]
+[*.{ts,vue}]
 indent_style = space
 indent_size = 2
 end_of_line = lf
