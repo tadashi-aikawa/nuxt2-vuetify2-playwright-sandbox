@@ -42,6 +42,12 @@ npm run test:e2e -- --ui
   - `*.helper.ts`は[Page Object Model] 
   - `*.spec.ts`はテストケース
 
+## ホスティング
+
+コードを見たいだけならWebにホスティングした環境をご覧ください。
+
+https://tadashi-aikawa.github.io/nuxt2-vuetify2-playwright-sandbox/
+
 ## 備考
 
 - 気が向いたらVuetify以外のケースも作成します (多分やらない)
