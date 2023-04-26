@@ -90,6 +90,16 @@ export class BasePage {
     await expect(oneBody).toEqual(anotherBody);
   }
 
+  async クリックしてファイルを指定(
+    locator: Locator,
+    path: string
+  ): Promise<void> {
+    const chooserPromise = this.page.waitForEvent("filechooser");
+    // v-file-inputの場合はforce: trueを指定しないと反応しない
+    await locator.click({ force: true });
+    const chooser = await chooserPromise;
+    await chooser.setFiles(path);
+  }
 
   async aタグの_blankは無視してクリック<T, A>(
     nextPageClass: ConstructorWithArg<A, Page>,

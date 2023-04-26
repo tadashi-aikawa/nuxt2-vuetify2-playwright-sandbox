@@ -36,6 +36,11 @@ const ITEMS: Item[] = [
     to: "/checkboxes",
   },
   {
+    icon: "mdi-file-upload-outline",
+    title: "File inputs",
+    to: "/file-inputs",
+  },
+  {
     icon: "mdi-form-dropdown",
     title: "Combobox",
     to: "/combobox",
