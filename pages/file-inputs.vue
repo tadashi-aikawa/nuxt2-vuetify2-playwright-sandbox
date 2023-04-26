@@ -3,7 +3,7 @@ import CardWrapper from "~/components/card-wrapper.vue";
 </script>
 
 <template>
-  <card-wrapper component-name="inputs">
+  <card-wrapper component-name="file-inputs">
     <v-file-input label="アップロードするファイルを指定してね"></v-file-input>
   </card-wrapper>
 </template>
