@@ -53,6 +53,33 @@ export class BasePage {
     return ページを開く(this.page, dstPageClass, query);
   }
 
+  async 新しいタブでページを開く<T, A>(
+    nextPageClass: ConstructorWithArg<A, Page>,
+    locator: Locator
+  ) {
+    const pagePromise = this.page.context().waitForEvent("page");
+    await locator.click();
+    const newPage = await pagePromise;
+    return new nextPageClass(newPage);
+  }
+
+  async 次のページが表示されていることを確認<P extends typeof BasePage>(
+    pageClass: P
+  ): Promise<InstanceType<P>> {
+    await expect(this.page).toHaveURL(
+      new RegExp(`${getBaseUrl()}${pageClass.path}($|\\?.+$)`)
+    );
+    return new pageClass(this.page) as InstanceType<P>;
+  }
+
+  async 閉じる() {
+    await this.page.close();
+  }
+
+  async リロードする() {
+    await this.page.reload();
+  }
+
   ダイアログはすべてOKをクリックして即座に閉じるようにする() {
     this.page.on("dialog", async (dialog) => {
       await dialog.accept();
@@ -99,24 +126,6 @@ export class BasePage {
     await locator.click({ force: true });
     const chooser = await chooserPromise;
     await chooser.setFiles(path);
-  }
-
-  async aタグの_blankは無視してクリック<T, A>(
-    nextPageClass: ConstructorWithArg<A, Page>,
-    locator: Locator
-  ) {
-    const pagePromise = this.page.context().waitForEvent("page");
-    await locator.click();
-    const newPage = await pagePromise;
-    return new nextPageClass(newPage);
-  }
-
-  async 次のページが表示されていることを確認<T extends typeof BasePage>(
-    pageClass: T
-  ): Promise<void> {
-    await expect(this.page).toHaveURL(
-      new RegExp(`${getBaseUrl()}${pageClass.path}($|\\?.+$)`)
-    );
   }
 }
 
