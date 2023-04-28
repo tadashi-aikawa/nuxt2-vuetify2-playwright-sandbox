@@ -62,13 +62,13 @@ onMounted(async () => {
 <template>
   <div>
     <v-tabs v-model="state.tabs" centered class="pt-3">
-      <v-tab href="#helper">
-        <v-icon left> mdi-language-typescript </v-icon>
-        テストヘルパークラス
-      </v-tab>
       <v-tab href="#spec">
         <v-icon left> mdi-drama-masks </v-icon>
         テストコード
+      </v-tab>
+      <v-tab href="#helper">
+        <v-icon left> mdi-language-typescript </v-icon>
+        テストヘルパークラス
       </v-tab>
       <v-tab href="#vue">
         <v-icon left> mdi-vuejs </v-icon>
@@ -81,16 +81,16 @@ onMounted(async () => {
     </v-tabs>
 
     <v-tabs-items v-model="state.tabs" class="tab-items">
-      <v-tab-item value="helper">
+      <v-tab-item value="spec">
         <highlight-code
-          :content="state.helperCode"
+          :content="state.specCode"
           language="typescript"
           max-height="600px"
         />
       </v-tab-item>
-      <v-tab-item value="spec">
+      <v-tab-item value="helper">
         <highlight-code
-          :content="state.specCode"
+          :content="state.helperCode"
           language="typescript"
           max-height="600px"
         />
