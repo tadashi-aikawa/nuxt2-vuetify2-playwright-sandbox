@@ -2,6 +2,7 @@ import { expect, Locator, Page, test } from "@playwright/test";
 import { getBaseUrl } from "./env";
 import { createQueryString } from "./utils";
 import * as fs from "fs";
+import { SelectsPage } from "./pages/selects.helper";
 
 interface ConstructorWithArg<T, A> {
   new (arg: A): T;
@@ -130,7 +131,11 @@ export class BasePage {
 }
 
 export const myTest = test.extend<{ page: Page }>({
-  page: async ({ playwright }, use) => {
-    await use(await createPage(playwright));
+  page: async ({ page }, use) => {
+    page.setViewportSize({
+      width: 1920,
+      height: 900,
+    });
+    await use(page);
   },
 });
