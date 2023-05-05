@@ -2,7 +2,6 @@ import { expect, Locator, Page, test } from "@playwright/test";
 import { getBaseUrl } from "./env";
 import { createQueryString } from "./utils";
 import * as fs from "fs";
-import { SelectsPage } from "./pages/selects.helper";
 
 interface ConstructorWithArg<T, A> {
   new (arg: A): T;
