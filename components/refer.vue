@@ -1,27 +1,10 @@
 <script setup lang="ts">
-import { computed, getCurrentInstance, onMounted, reactive } from "vue";
-import HighlightCode from "~/components/highlight-code.vue";
+import { computed } from "vue";
 
 interface Props {
   componentName: string;
 }
 const props = defineProps<Props>();
-
-interface State {
-  pageCode: string;
-  helperCode: string;
-  specCode: string;
-  tabs: any;
-}
-
-const state = reactive<State>({
-  helperCode: "",
-  pageCode: "",
-  specCode: "",
-  tabs: null,
-});
-
-const root = getCurrentInstance()!.proxy!;
 
 const vuetifyUrl = computed(
   () => `https://v2.vuetifyjs.com/ja/components/${props.componentName}/`
@@ -39,86 +22,41 @@ const specUrl = computed(
   () =>
     `https://github.com/tadashi-aikawa/nuxt2-vuetify2-playwright-sandbox/blob/main/tests/pages/${props.componentName}.spec.ts`
 );
-
-onMounted(async () => {
-  const rawUrlBase = `https://raw.githubusercontent.com/tadashi-aikawa/nuxt2-vuetify2-playwright-sandbox/main`;
-
-  const [pageCode, helperCode, specCode] = await Promise.all([
-    root.$axios.$get(`${rawUrlBase}/pages/${props.componentName}.vue`),
-    root.$axios.$get(
-      `${rawUrlBase}/tests/pages/${props.componentName}.helper.ts`
-    ),
-    root.$axios.$get(
-      `${rawUrlBase}/tests/pages/${props.componentName}.spec.ts`
-    ),
-  ]);
-
-  state.pageCode = pageCode;
-  state.helperCode = helperCode;
-  state.specCode = specCode;
-});
 </script>
 
 <template>
-  <div>
-    <v-tabs v-model="state.tabs" centered class="pt-3">
-      <v-tab href="#spec">
-        <v-icon left> mdi-drama-masks </v-icon>
-        テストコード
-      </v-tab>
-      <v-tab href="#helper">
-        <v-icon left> mdi-language-typescript </v-icon>
-        テストヘルパークラス
-      </v-tab>
-      <v-tab href="#vue">
-        <v-icon left> mdi-vuejs </v-icon>
-        Vueファイル
-      </v-tab>
-      <v-tab href="#vuetify">
-        <v-icon left> mdi-vuetify </v-icon>
+  <v-card-actions class="d-flex justify-center">
+    <a :href="vuetifyUrl" target="_blank" class="button-link">
+      <v-btn color="cyan" class="ma-2 white--text" text small>
         Vuetifyドキュメント
-      </v-tab>
-    </v-tabs>
-
-    <v-tabs-items v-model="state.tabs" class="tab-items">
-      <v-tab-item value="spec">
-        <highlight-code
-          :content="state.specCode"
-          language="typescript"
-          max-height="600px"
-        />
-      </v-tab-item>
-      <v-tab-item value="helper">
-        <highlight-code
-          :content="state.helperCode"
-          language="typescript"
-          max-height="600px"
-        />
-      </v-tab-item>
-      <v-tab-item value="vue">
-        <highlight-code
-          :content="state.pageCode"
-          language="typescript"
-          max-height="600px"
-        />
-      </v-tab-item>
-      <v-tab-item value="vuetify">
-        <iframe :src="vuetifyUrl" style="height: 560px; width: 100%" />
-      </v-tab-item>
-    </v-tabs-items>
-  </div>
+        <v-icon right> mdi-vuetify </v-icon>
+      </v-btn>
+    </a>
+    <a :href="pageUrl" target="_blank" class="button-link">
+      <v-btn color="green" class="ma-2 white--text" text small>
+        Vueファイル
+        <v-icon right> mdi-vuejs </v-icon>
+      </v-btn>
+    </a>
+    <a :href="specUrl" target="_blank" class="button-link">
+      <v-btn color="red" class="ma-2 white--text" text small>
+        テストコード
+        <v-icon right> mdi-drama-masks </v-icon>
+      </v-btn>
+    </a>
+    <a :href="helperUrl" target="_blank" class="button-link">
+      <v-btn color="blue" class="ma-2 white--text" text small>
+        テストヘルパークラス
+        <v-icon right> mdi-language-typescript </v-icon>
+      </v-btn>
+    </a>
+  </v-card-actions>
 </template>
 
 <style scoped>
 .button-link {
   text-decoration: none;
   color: inherit;
-}
-
-.tab-items {
-  font-size: 90%;
-  padding: 30px;
-  overflow: scroll;
 }
 </style>
 
