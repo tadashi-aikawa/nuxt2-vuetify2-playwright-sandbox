@@ -28,10 +28,13 @@ export class DatatablesPage extends BasePage {
   }
 
   get テーブルフッター() {
-    // 構造かクラスのどちらかに依存させないと取得できない...
-    const outer = this.page.locator(".v-data-footer");
+    const outer = this.page
+      .locator(":below(table)")
+      .getByText("Rows per page")
+      .locator("xpath=..");
+
     return {
-      カウンタ: () => outer.locator("div").filter({ hasText: " of " }),
+      カウンタ: () => outer.getByText(" of "),
     };
   }
 }
