@@ -7,28 +7,6 @@ interface ConstructorWithArg<T, A> {
   new (arg: A): T;
 }
 
-export async function createPage(
-  playwright: typeof import("playwright-core"),
-  option?: {
-    slowMo?: number;
-    width?: number;
-    height?: number;
-  }
-): Promise<Page> {
-  const browser = await playwright["chromium"].launch({
-    slowMo: option?.slowMo ?? 200,
-  });
-  const context = await browser.newContext();
-  const page = await context.newPage();
-
-  await page.setViewportSize({
-    width: option?.width ?? 1920,
-    height: option?.height ?? 900,
-  });
-
-  return page;
-}
-
 export async function ページを開く<P extends typeof BasePage>(
   page: Page,
   dstPageClass: P,
