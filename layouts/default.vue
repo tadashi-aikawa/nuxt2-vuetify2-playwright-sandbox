@@ -36,6 +36,11 @@ const ITEMS: Item[] = [
     to: "/checkboxes",
   },
   {
+    icon: "mdi-circle-outline",
+    title: "Chips",
+    to: "/chips",
+  },
+  {
     icon: "mdi-form-dropdown",
     title: "Combobox",
     to: "/combobox",
