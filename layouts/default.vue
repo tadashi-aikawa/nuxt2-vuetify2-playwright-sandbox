@@ -116,6 +116,7 @@ const state = reactive<State>({
           :to="item.to"
           router
           exact
+          @click.stop.prevent
         >
           <v-list-item-action>
             <v-icon>{{ item.icon }}</v-icon>
