@@ -6,7 +6,7 @@ const sheet = ref(false);
 </script>
 
 <template>
-  <card-wrapper component-name="bottom-navigation">
+  <card-wrapper component-name="bottom-sheets">
     <v-bottom-sheet v-model="sheet" inset>
       <template v-slot:activator="{ on, attrs }">
         <v-btn v-bind="attrs" v-on="on">ボトムシートを開く</v-btn>

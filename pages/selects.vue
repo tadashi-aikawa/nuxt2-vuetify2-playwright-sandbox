@@ -24,7 +24,7 @@ const items = [
 </script>
 
 <template>
-  <card-wrapper component-name="combobox">
+  <card-wrapper component-name="selects">
     <v-row>
       <v-select
         v-model="selected.single"
