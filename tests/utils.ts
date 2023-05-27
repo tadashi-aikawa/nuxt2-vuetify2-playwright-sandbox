@@ -35,5 +35,5 @@ export async function assertLocatorsAsTexts(
         .then((t) => (trimDelimiter ? t.trimEnd().replace(/,$/, "") : t))
     )
   );
-  expect(new Set(innerTexts)).toEqual(new Set(values));
+  await expect(new Set(innerTexts)).toStrictEqual(new Set(values));
 }

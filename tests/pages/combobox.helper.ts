@@ -1,7 +1,7 @@
 import type { Locator } from "@playwright/test";
 import { BasePage } from "~/tests/page";
 
-// XXX* spanタグやiタグに依存するLocatorが一部存在する
+// XXX: iタグに依存するLocatorが一部存在する
 export class ComboboxPage extends BasePage {
   static path = "/combobox";
 
@@ -41,7 +41,10 @@ export class ComboboxPage extends BasePage {
     const combobox = this.page.getByRole("combobox");
     return {
       展開ボタン: combobox.filter({ hasText: "複数選択chips" }).locator("i"),
-      値: combobox.locator('span:below(:text("複数選択chips"))').all(),
+      値: combobox
+        .locator(':below(:text("複数選択chips"))')
+        .filter({ hasText: /.+/ })
+        .all(),
       入力欄: combobox.getByLabel("複数選択chips"),
     };
   }
