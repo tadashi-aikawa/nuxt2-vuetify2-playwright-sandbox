@@ -26,20 +26,47 @@ const items = [
 <template>
   <card-wrapper component-name="combobox">
     <v-row>
-      <v-combobox
-        v-model="selected.single"
-        :items="items"
-        label="単一選択"
-      ></v-combobox>
+      <v-col sm="2">
+        <v-combobox
+          v-model="selected.single"
+          :items="items"
+          label="単一選択text"
+        ></v-combobox>
+      </v-col>
     </v-row>
 
     <v-row>
-      <v-combobox
-        v-model="selected.multiple"
-        :items="items"
-        label="複数選択"
-        multiple
-      ></v-combobox>
+      <v-col sm="3">
+        <v-combobox
+          v-model="selected.multiple"
+          :items="items"
+          label="複数選択text"
+          multiple
+        ></v-combobox>
+      </v-col>
+    </v-row>
+
+    <v-row>
+      <v-col sm="2">
+        <v-combobox
+          v-model="selected.single"
+          :items="items"
+          label="単一選択chips"
+          chips
+        ></v-combobox>
+      </v-col>
+    </v-row>
+
+    <v-row>
+      <v-col sm="3">
+        <v-combobox
+          v-model="selected.multiple"
+          :items="items"
+          label="複数選択chips"
+          chips
+          multiple
+        ></v-combobox>
+      </v-col>
     </v-row>
   </card-wrapper>
 </template>
