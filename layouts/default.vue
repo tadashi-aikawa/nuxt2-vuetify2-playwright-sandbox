@@ -66,14 +66,19 @@ const ITEMS: Item[] = [
     to: "/inputs",
   },
   {
+    icon: "mdi-radiobox-marked",
+    title: "RadioButtons",
+    to: "/radio-buttons",
+  },
+  {
     icon: "mdi-form-select",
     title: "Selects",
     to: "/selects",
   },
   {
-    icon: "mdi-radiobox-marked",
-    title: "RadioButtons",
-    to: "/radio-buttons",
+    icon: "mdi-tab",
+    title: "Tabs",
+    to: "/tabs",
   },
   {
     icon: "mdi-form-textarea",
