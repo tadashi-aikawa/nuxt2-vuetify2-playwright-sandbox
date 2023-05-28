@@ -4,16 +4,21 @@ import { reactive } from "vue";
 const ITEMS: Item[] = [
   { icon: "mdi-apps", title: "Top", to: "/" },
   { icon: "mdi-alert", title: "Alerts", to: "/alerts" },
+  {
+    icon: "mdi-application",
+    title: "AppBars",
+    to: "/app-bars",
+  },
+  {
+    icon: "mdi-alphabetical-variant",
+    title: "Autocompletes",
+    to: "/autocompletes",
+  },
   { icon: "mdi-square-rounded-badge-outline", title: "Badges", to: "/badges" },
   {
     icon: "mdi-toaster-oven",
     title: "Banners",
     to: "/banners",
-  },
-  {
-    icon: "mdi-application",
-    title: "Bars/AppBars",
-    to: "/app-bars",
   },
   {
     icon: "mdi-dock-bottom",
