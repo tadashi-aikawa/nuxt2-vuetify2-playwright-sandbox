@@ -13,7 +13,7 @@ export class ComboboxPage extends BasePage {
   get 単一選択テキストのコンボボックス() {
     const combobox = this.page.getByRole("combobox");
     return {
-      展開ボタン: combobox.filter({ hasText: "単一選択text" }).locator("i"),
+      開閉ボタン: combobox.filter({ hasText: "単一選択text" }).locator("i"),
       値: combobox.getByLabel("単一選択text"),
       入力欄: combobox.getByLabel("単一選択text"),
     };
@@ -22,7 +22,7 @@ export class ComboboxPage extends BasePage {
   get 単一選択チップのコンボボックス() {
     const combobox = this.page.getByRole("combobox");
     return {
-      展開ボタン: combobox.filter({ hasText: "単一選択chips" }).locator("i"),
+      開閉ボタン: combobox.filter({ hasText: "単一選択chips" }).locator("i"),
       値: combobox.locator(':below(:text("単一選択chips"))').first(),
       入力欄: combobox.getByLabel("単一選択chips"),
     };
@@ -31,7 +31,7 @@ export class ComboboxPage extends BasePage {
   get 複数選択テキストのコンボボックス() {
     const combobox = this.page.getByRole("combobox");
     return {
-      展開ボタン: combobox.filter({ hasText: "複数選択text" }).locator("i"),
+      開閉ボタン: combobox.filter({ hasText: "複数選択text" }).locator("i"),
       値: combobox.locator(':below(:text("複数選択text")):left-of(i)').all(),
       入力欄: combobox.getByLabel("複数選択text"),
     };
@@ -40,7 +40,7 @@ export class ComboboxPage extends BasePage {
   get 複数選択チップのコンボボックス() {
     const combobox = this.page.getByRole("combobox");
     return {
-      展開ボタン: combobox.filter({ hasText: "複数選択chips" }).locator("i"),
+      開閉ボタン: combobox.filter({ hasText: "複数選択chips" }).locator("i"),
       値: combobox
         .locator(':below(:text("複数選択chips"))')
         .filter({ hasText: /.+/ })

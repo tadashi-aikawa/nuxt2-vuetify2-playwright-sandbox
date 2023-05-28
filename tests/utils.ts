@@ -1,5 +1,13 @@
 import { expect, Locator } from "@playwright/test";
 
+async function asyncSleep(ms: number): Promise<void> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, ms);
+  });
+}
+
 export function createQueryString(query?: {
   [key: string]: string | number;
 }): string {
@@ -23,7 +31,7 @@ export async function assertLocatorsAsTexts(
   locators: Locator[],
   values: string[],
   option?: {
-    trimDelimiter?: boolean;
+    trimDelimiter?: boolean; // selectなどの場合は『,』が末尾につくため
   }
 ) {
   const trimDelimiter = option?.trimDelimiter ?? false;
@@ -35,5 +43,6 @@ export async function assertLocatorsAsTexts(
         .then((t) => (trimDelimiter ? t.trimEnd().replace(/,$/, "") : t))
     )
   );
+
   await expect(new Set(innerTexts)).toStrictEqual(new Set(values));
 }

@@ -3,8 +3,10 @@ import { reactive } from "vue";
 import CardWrapper from "~/components/card-wrapper.vue";
 
 const selected = reactive({
-  single: "first",
-  multiple: [],
+  singleText: "first",
+  multipleText: [],
+  singleChips: "first",
+  multipleChips: [],
 });
 
 const items = [
@@ -28,7 +30,7 @@ const items = [
     <v-row>
       <v-col sm="2">
         <v-combobox
-          v-model="selected.single"
+          v-model="selected.singleText"
           :items="items"
           label="単一選択text"
         ></v-combobox>
@@ -38,7 +40,7 @@ const items = [
     <v-row>
       <v-col sm="3">
         <v-combobox
-          v-model="selected.multiple"
+          v-model="selected.multipleText"
           :items="items"
           label="複数選択text"
           multiple
@@ -49,7 +51,7 @@ const items = [
     <v-row>
       <v-col sm="2">
         <v-combobox
-          v-model="selected.single"
+          v-model="selected.singleChips"
           :items="items"
           label="単一選択chips"
           chips
@@ -60,7 +62,7 @@ const items = [
     <v-row>
       <v-col sm="3">
         <v-combobox
-          v-model="selected.multiple"
+          v-model="selected.multipleChips"
           :items="items"
           label="複数選択chips"
           chips

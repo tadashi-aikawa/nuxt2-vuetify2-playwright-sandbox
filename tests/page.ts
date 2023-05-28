@@ -58,6 +58,15 @@ export class BasePage {
     await this.page.reload();
   }
 
+  async ESCを押す(afterDelayMs: number = 250) {
+    await this.page.keyboard.press("Escape");
+    await this.待つ(afterDelayMs);
+  }
+
+  async 待つ(milliSec: number) {
+    await this.page.waitForTimeout(milliSec);
+  }
+
   ダイアログはすべてOKをクリックして即座に閉じるようにする() {
     this.page.on("dialog", async (dialog) => {
       await dialog.accept();
