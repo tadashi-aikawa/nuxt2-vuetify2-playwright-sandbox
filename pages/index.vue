@@ -1,9 +1,13 @@
 <script setup lang="ts">
+import { useGtag } from "~/composable/gtag";
+
 const urlBase = `https://github.com/tadashi-aikawa/nuxt2-vuetify2-playwright-sandbox/blob/main`;
 
 const pageUrl = `${urlBase}/tests/page.ts`;
 const envUrl = `${urlBase}/tests/env.ts`;
 const utilsUrl = `${urlBase}/tests/utils.ts`;
+
+const { recordEvent } = useGtag();
 
 const items = [
   { url: pageUrl, path: "tests/page.ts", description: "Pageのベースクラス" },
@@ -35,7 +39,17 @@ const items = [
 
           <v-card-actions>
             <a :href="item.url" target="_blank" class="button-link">
-              <v-btn class="ma-2" depressed small>
+              <v-btn
+                class="ma-2"
+                depressed
+                small
+                @click="
+                  recordEvent('show_github_source', {
+                    component: item.path,
+                    fileKind: 'util',
+                  })
+                "
+              >
                 <v-icon color="gray"> mdi-github </v-icon>
                 GitHubで開く
               </v-btn>

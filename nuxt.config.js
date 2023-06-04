@@ -25,6 +25,18 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
+    [
+      "@nuxtjs/google-gtag",
+      {
+        id: "G-FVBTSJTL46",
+        config: {
+          send_page_view: false,
+          debug_mode: process.env.NODE_ENV !== "production",
+        },
+        debug: process.env.NODE_ENV !== "production",
+        disableAutoPageTrack: false,
+      },
+    ],
   ],
   axios: {
     baseURL: "/",

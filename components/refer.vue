@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import { useGtag } from "~/composable/gtag";
 
 interface Props {
   componentName: string;
 }
 const props = defineProps<Props>();
+
+const { recordEvent } = useGtag();
 
 const vuetifyUrl = computed(
   () => `https://v2.vuetifyjs.com/ja/components/${props.componentName}/`
@@ -33,19 +36,52 @@ const specUrl = computed(
       </v-btn>
     </a>
     <a :href="pageUrl" target="_blank" class="button-link">
-      <v-btn color="green" class="ma-2 white--text" text small>
+      <v-btn
+        color="green"
+        class="ma-2 white--text"
+        text
+        small
+        @click="
+          recordEvent('show_github_source', {
+            component: componentName,
+            fileKind: 'vue',
+          })
+        "
+      >
         Vueファイル
         <v-icon right> mdi-vuejs </v-icon>
       </v-btn>
     </a>
     <a :href="specUrl" target="_blank" class="button-link">
-      <v-btn color="red" class="ma-2 white--text" text small>
+      <v-btn
+        color="red"
+        class="ma-2 white--text"
+        text
+        small
+        @click="
+          recordEvent('show_github_source', {
+            component: componentName,
+            fileKind: 'test',
+          })
+        "
+      >
         テストコード
         <v-icon right> mdi-drama-masks </v-icon>
       </v-btn>
     </a>
     <a :href="helperUrl" target="_blank" class="button-link">
-      <v-btn color="blue" class="ma-2 white--text" text small>
+      <v-btn
+        color="blue"
+        class="ma-2 white--text"
+        text
+        small
+        @click="
+          recordEvent('show_github_source', {
+            component: componentName,
+            fileKind: 'test-helper',
+          })
+        "
+      >
         テストヘルパークラス
         <v-icon right> mdi-language-typescript </v-icon>
       </v-btn>
