@@ -1,3 +1,19 @@
+const isProduction = process.env.NODE_ENV === "production";
+
+const gtagConfig = {
+  id: "G-FVBTSJTL46",
+  config: {
+    send_page_view: false,
+  },
+  debug: !isProduction,
+  disableAutoPageTrack: false,
+};
+// debug_mode: false でもデバッグモードは有効になるため別の処理として追加している (undefinedでもいいかもだけど)
+// https://developers.google.com/analytics/devguides/collection/ga4/debug?hl=ja&technology=websites
+if (!isProduction) {
+  gtagConfig.config.debug_mode = true;
+}
+
 export default {
   ssr: false,
   target: "static",
@@ -25,18 +41,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
-    [
-      "@nuxtjs/google-gtag",
-      {
-        id: "G-FVBTSJTL46",
-        config: {
-          send_page_view: false,
-          debug_mode: process.env.NODE_ENV !== "production",
-        },
-        debug: process.env.NODE_ENV !== "production",
-        disableAutoPageTrack: false,
-      },
-    ],
+    ["@nuxtjs/google-gtag", gtagConfig],
   ],
   axios: {
     baseURL: "/",
