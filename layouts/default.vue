@@ -101,7 +101,7 @@ interface Item {
 
 const state = reactive<State>({
   drawer: true,
-  mini: true,
+  mini: false,
   title: "Nuxt2 Vue2 Playwright Sandbox",
 });
 </script>
@@ -123,6 +123,7 @@ const state = reactive<State>({
       :mini-variant.sync="state.mini"
       app
       absolute
+      style="min-width: 60px"
     >
       <v-list>
         <v-list-item
