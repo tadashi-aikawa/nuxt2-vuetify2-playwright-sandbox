@@ -23,7 +23,7 @@ const items = [
 <template>
   <v-container>
     <v-row>
-      <v-col v-for="item in items" cols="4">
+      <v-col :key="item.path" v-for="item in items" cols="4">
         <v-card
           width="400px"
           class="d-flex justify-center align-center flex-column"
