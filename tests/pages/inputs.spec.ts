@@ -12,6 +12,12 @@ myTest("初期値が空でもエラーは出ない", async ({ page }) => {
   await expect(入力画面.エラーアラート).toBeHidden();
 });
 
+myTest("入力した文字列を確認する", async ({ page }) => {
+  const 入力画面 = await ページを開く(page, InputsPage);
+  await 入力画面.入力欄.fill("hoge");
+  await expect(入力画面.入力欄).toHaveValue("hoge");
+});
+
 myTest("一度文字を入力してから空にするとエラーが出る", async ({ page }) => {
   const 入力画面 = await ページを開く(page, InputsPage);
   await 入力画面.入力欄.fill("hoge");
