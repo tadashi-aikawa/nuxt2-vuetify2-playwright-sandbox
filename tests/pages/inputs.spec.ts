@@ -39,3 +39,9 @@ myTest("21文字以上ならエラーが出る", async ({ page }) => {
   await expect(入力画面.エラーアラート).toBeVisible();
   await expect(入力画面.エラーアラート).toHaveText("20文字を越えています");
 });
+
+myTest("single-lineの項目に入力", async ({ page }) => {
+  const 入力画面 = await ページを開く(page, InputsPage);
+  await 入力画面.singleLineの入力欄.fill("fuga");
+  await expect(入力画面.singleLineの入力欄).toHaveValue("fuga");
+});
